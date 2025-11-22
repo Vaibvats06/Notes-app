@@ -25,7 +25,7 @@ const UploadNotes = () => {
     formData.append("semester", semester);
     formData.append("file", file);
     const response = await axios.post(
-      "http://localhost:3000/api/notes/upload-notes",
+      `${import.meta.env.VITE_SERVER_URL}/api/notes/upload-notes`,
       formData,
       {
         withCredentials: true,
