@@ -9,13 +9,24 @@ const UploadNotes = () => {
   const [subject, setSubject] = React.useState("");
   const [courseName, setCourseName] = React.useState("");
   const [department, setDepartment] = React.useState("B.Tech");
-  const [year, setYear] = React.useState();
-  const [semester, setSemester] = React.useState();
+  const [year, setYear] = React.useState("");
+  const [semester, setSemester] = React.useState("");
   const [file, setFile] = React.useState(null);
-  const formData = new FormData();
+  
 
   //upload handler function
   const uploadHandler = async () => {
+    const formData = new FormData();
+    console.log("Upload handler called");
+    console.log({
+      chapterName,
+      subject,  
+      courseName,
+      department,
+      year,
+      semester,
+      file,
+    });
     //form data to send to backend
     formData.append("chapterName", chapterName);
     formData.append("subject", subject);
@@ -24,6 +35,7 @@ const UploadNotes = () => {
     formData.append("year", year);
     formData.append("semester", semester);
     formData.append("file", file);
+    console.log(formData);
     const response = await axios.post(
       `${import.meta.env.VITE_SERVER_URL}/api/notes/upload-notes`,
       formData,
@@ -124,6 +136,7 @@ const UploadNotes = () => {
                 onChange={(e) => setDepartment(e.target.value)}
                 className="outline-none border w-full px-2 py-1 rounded "
               >
+                 <option value="">Select Department</option>
                 <option value="B.Tech">B.Tech</option>
                 <option value="B.Pharma">B.Pharma</option>
               </select>
@@ -140,6 +153,7 @@ const UploadNotes = () => {
                   onChange={(e) => setYear(e.target.value)}
                   className="outline-none border w-full px-2 py-1 rounded mr-2 overflow-auto select-left "
                 >
+                  <option value="">Select Year</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -157,6 +171,7 @@ const UploadNotes = () => {
                   onChange={(e) => setSemester(e.target.value)}
                   className="outline-none border w-full px-2 py-1 rounded "
                 >
+                   <option value="">Select Semester</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

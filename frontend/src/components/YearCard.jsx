@@ -12,10 +12,10 @@ const YearCard = ({data}) => {
 
   
   return (
-<div className="card bg-base-100 w-80 shadow-sm cursor-pointer" onClick={handler}>
+<div className="card bg-base-100 w-40 sm:w-50 md:w-60  lg:w-70 xl:w-80 shadow-sm cursor-pointer" onClick={handler}>
   <div className="card-body">
-    <h2 className="card-title">{`${data.title}`}</h2>
-    <p>{`${data.content}`}</p>
+    <h2 className="card-title ">{`${data.title}`}</h2>
+    <p className="">{`${data.content}`}</p>
   </div>
   <figure>
     <img

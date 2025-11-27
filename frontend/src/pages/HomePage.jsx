@@ -1,7 +1,13 @@
 import React from 'react'
 import YearCard from '../components/YearCard'
+import useNotesFetch from '../hooks/useNotesFetch.jsx';
+import { useSelector } from 'react-redux';
 
 const HomePage = () => {
+  useNotesFetch();
+  const notesData = useSelector((state) => state.notes.notesData);
+  console.log("Notes Data in HomePage:", notesData);
+
   const year_data=[
     {"title":"1ST YEAR",
       "content":"You can see and download all 1st Year B.Tech notes here. All subjects are available in one place for your convenience.",
@@ -24,8 +30,8 @@ const HomePage = () => {
 
 ]
   return (
-    <div className="min-h-screen bg-amber-100 px-6 py-10 lg:px-12">
-      <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-4 '>
+    <div className="min-h-screen  bg-amber-100 px-6 py-10 lg:px-12">
+      <div className='grid gap-8 grid-cols-2  md:grid-cols-3 xl:grid-cols-4 '>
         {
         year_data.map((item,index)=>(
             <YearCard key={index} data={item}  />

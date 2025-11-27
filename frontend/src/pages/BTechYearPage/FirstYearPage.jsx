@@ -1,5 +1,5 @@
 import React from 'react'
-import FirstYearCard from '../components/FirstYearCard'
+import FirstYearCard from '../../components/FirstYearCard'
 
 const FirstYearPage = () => {
         const firstYearSubjects = [
@@ -46,7 +46,7 @@ const FirstYearPage = () => {
 ];  
   return (
     <div className="min-h-screen bg-amber-100 px-6 py-10 lg:px-12">
-      <div className='grid gap-8 sm:grid-cols-2 lg:grid-cols-4 '>
+      <div className='grid gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4'>
         {
         firstYearSubjects.map((item,index)=>(
             <FirstYearCard key={index} data={item}  />
