@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { use } from 'react'
 import FirstYearCard from '../../components/FirstYearCard'
+import { useSelector } from 'react-redux';
+import useNotesFetch from '../../hooks/useNotesFetch.jsx';
 
 const FirstYearPage = () => {
+  useNotesFetch();
+  const notesData = useSelector((state) => state.notes.notesData);
+  for (let i in notesData) {
+    console.log(notesData[i].subject);
+  }
         const firstYearSubjects = [
   {
     subject: "Physics",

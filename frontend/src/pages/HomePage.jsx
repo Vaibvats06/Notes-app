@@ -4,9 +4,7 @@ import useNotesFetch from '../hooks/useNotesFetch.jsx';
 import { useSelector } from 'react-redux';
 
 const HomePage = () => {
-  useNotesFetch();
-  const notesData = useSelector((state) => state.notes.notesData);
-  console.log("Notes Data in HomePage:", notesData);
+
 
   const year_data=[
     {"title":"1ST YEAR",
