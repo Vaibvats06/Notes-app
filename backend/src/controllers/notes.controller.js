@@ -1,6 +1,6 @@
 import Notes from '../models/notes.js';
 import { v4 as uuid } from 'uuid';
-import { fileUpload } from '../utlis/StorageService.js';
+import { fileUpload } from '../utils/StorageService.js';
 export async function uploadNotes(req, res) {
     try {
         const {chapterName, subject, department, courseName, year, semester,file} = req.body;
