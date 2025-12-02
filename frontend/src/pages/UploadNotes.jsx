@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import DashboardNavbar from "../components/DashboardNavbar";
 
 const UploadNotes = () => {
   const navigate = useNavigate();
@@ -17,16 +18,10 @@ const UploadNotes = () => {
   //upload handler function
   const uploadHandler = async () => {
     const formData = new FormData();
-    console.log("Upload handler called");
-    console.log({
-      chapterName,
-      subject,  
-      courseName,
-      department,
-      year,
-      semester,
-      file,
-    });
+    if(!chapterName || !subject || !courseName || !department || !year || !semester || !file){
+      toast.error("Please fill all the fields");
+      return;
+    }
     //form data to send to backend
     formData.append("chapterName", chapterName);
     formData.append("subject", subject);
@@ -36,6 +31,7 @@ const UploadNotes = () => {
     formData.append("semester", semester);
     formData.append("file", file);
     console.log(formData);
+    
     const response = await axios.post(
       `${import.meta.env.VITE_SERVER_URL}/api/notes/upload-notes`,
       formData,
@@ -46,6 +42,7 @@ const UploadNotes = () => {
         },
       }
     );
+    
     if (response.status === 201 || response.data.message==="Notes uploaded successfully") {
       toast.success("Notes uploaded successfully");
       setChapterName("");
@@ -61,7 +58,11 @@ const UploadNotes = () => {
 
   return (
     // Body of the upload notes
-    <div className="w-screen h-screen bg-[#f6f6f8] text-black items-center flex">
+    <div className="flex">
+    
+      <DashboardNavbar/>
+    
+    <div className="w-screen h-screen bg-[#f6f6f8] text-black items-center flex relative top-16">
       <div className="mx-50 w-full">
         {/* Heading and description */}
         <h1 className="text-2xl font-bold mb-2 text-gray-900">
@@ -90,6 +91,7 @@ const UploadNotes = () => {
               onChange={(e) => setChapterName(e.target.value)}
               placeholder="e.g., introduction to algebra"
               className="outline-none border w-full px-2 py-1 rounded focus:border-orange-600"
+              required
             />
           </div>
           {/* Input fields for subject & course name */}
@@ -106,6 +108,7 @@ const UploadNotes = () => {
                 onChange={(e) => setSubject(e.target.value)}
                 placeholder="e.g., Mathematics ,Physics"
                 className="outline-none border w-full px-2 py-1 rounded focus:border-orange-600"
+                required
               />
             </div>
             <div>
@@ -120,6 +123,7 @@ const UploadNotes = () => {
                 id="courseName"
                 placeholder="e.g., Computer Science ,Electronics, etc"
                 className="outline-none border w-full px-2 py-1 rounded focus:border-orange-600"
+                required
               />
             </div>
           </div>
@@ -216,6 +220,7 @@ const UploadNotes = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
