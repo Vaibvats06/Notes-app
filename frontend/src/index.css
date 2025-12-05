@@ -1,2 +1,10 @@
 @import "tailwindcss";
  
+@layer utilities {
+  .clip-curve {
+    clip-path: ellipse(75% 90% at 75% 50%);
+  }
+}
+.line-height-normal {
+  --spacing: 1px; 
+}

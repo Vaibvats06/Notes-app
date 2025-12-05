@@ -1,42 +1,51 @@
-import React from 'react'
-import Home from './pages/Home'
-import Navbar from './components/Navbar'
-import { Route,Routes ,useLocation } from 'react-router-dom'
-import FirstYearPage from './pages/BTechYearPage/FirstYearPage'
-import Login from './pages/Login.jsx'
-import Register from './pages/Register.jsx'
-import ForgotPassword from './pages/ForgotPassword.jsx'
-import NotesPdf from './components/NotesPdf'
-import UploadNotes from './pages/UploadNotes'
-import { Toaster } from 'react-hot-toast'
-import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React from "react";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import { Route, Routes } from "react-router-dom";
+import Login from "./pages/authPages/Login.jsx";
+import Register from "./pages/authPages/Register.jsx";
+import ForgotPassword from "./pages/authPages/ForgotPassword.jsx";
+import UploadNotes from "./pages/UploadNotes";
+import { Toaster } from "react-hot-toast";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import MyNotes from "./pages/myLibrary/MyNotes.jsx";
+import MyUploadNotes from "./pages/myLibrary/MyUploadNotes.jsx";
 
 const App = () => {
-  const location =useLocation();
-  const userData=useSelector((state) => state.user.userData); // Replace with actual user data retrieval logic
-  // Hide navbar on dashboard routes
-  const hideNavbar = ['/upload-notes', '/login' ,'/'].some(path => location.pathname.startsWith(path));
-  return (<>
-    {!hideNavbar && <Navbar />}
+  const userData = useSelector((state) => state.user.userData); // Replace with actual user data retrieval logic
+  return (
     <div>
-      <Routes >
+      <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/year/1STYEAR" element={<FirstYearPage />} />
-        
-         <Route path="/year/1STYEAR/*" element={<NotesPdf/>} />
-         <Route path="/upload-notes" element={!userData?<Login/>:<UploadNotes/>} />
-         <Route path="/year/4THYEAR/*" element={<NotesPdf/>} />
-     
-        <Route path="/login" element={!userData?<Login />:<Navigate to="/" />} />
-         <Route path="/register" element={!userData?<Register />:<Navigate to="/" />} />
-        <Route path="/forgot-password" element={<ForgotPassword/>} />
-      </Routes>
-      
-      <div><Toaster/></div>
-    </div>
-    </>
-  )
-}
 
-export default App
+        <Route
+          path="/upload-notes"
+          element={!userData ? <Login /> : <UploadNotes />}
+        />
+
+        <Route
+          path="/login"
+          element={!userData ? <Login /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/register"
+          element={!userData ? <Register /> : <Navigate to="/" />}
+        />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        {/* My Library Routes */}
+        <Route path="/my-library/mynotes" element={userData && <MyNotes />} />
+        <Route path="/my-library/myuploadnotes" element={userData &&<MyUploadNotes />} />
+      </Routes>
+
+      {/* Toast notification container */}
+
+      <div>
+        <Toaster />
+      </div>
+    </div>
+  );
+};
+
+export default App;

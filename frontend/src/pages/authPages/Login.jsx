@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 // Sign in with google
-import { auth, provider } from "../utlis/firebase.auth.js";
+import { auth, provider } from "../../utlis/firebase.auth.js";
 import { signInWithPopup } from "firebase/auth";
-import { setUserData } from "../redux/userSlice.js";
+import { setUserData } from "../../redux/userSlice.js";
 import { useDispatch } from "react-redux";
 
 

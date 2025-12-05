@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch } from 'react-redux';
-import { setNotesData } from '../redux/notesSlice.js';
+import { setNotesData } from '../../redux/notesSlice.js';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
