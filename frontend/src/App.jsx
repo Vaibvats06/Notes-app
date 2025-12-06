@@ -36,7 +36,7 @@ const App = () => {
 
         {/* My Library Routes */}
         <Route path="/my-library/mynotes" element={userData && <MyNotes />} />
-        <Route path="/my-library/myuploadnotes" element={userData &&<MyUploadNotes />} />
+        <Route path="/my-library/myuploadnotes" element={<MyUploadNotes />} />
       </Routes>
 
       {/* Toast notification container */}

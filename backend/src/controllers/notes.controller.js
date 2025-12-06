@@ -4,6 +4,7 @@ import { fileUpload } from '../utils/StorageService.js';
 export async function uploadNotes(req, res) {
     try {
         const {chapterName, subject, department, courseName, year, semester,file} = req.body;
+        const userId=req.userId;
         console.log(chapterName);
         console.log(req.file);
         const result=await fileUpload(req.file.buffer,uuid())
@@ -14,7 +15,9 @@ export async function uploadNotes(req, res) {
             courseName,
             year,
             semester,
-            url: result.url
+            url: result.url,
+            userID:userId
+            
         });
         res.status(201).json({ message: 'Notes uploaded successfully', notes: notesData });
 

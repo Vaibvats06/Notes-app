@@ -29,6 +29,11 @@ const notesSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    userID:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        unqiue:false
+    }
 }, 
 { timestamps: true }
 
