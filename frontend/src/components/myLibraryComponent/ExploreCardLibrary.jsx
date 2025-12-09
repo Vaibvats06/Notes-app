@@ -2,12 +2,7 @@ import React from "react";
 import { MdDownload } from "react-icons/md";
 
 const ExploreCard = ({ note }) => {
-  const downloadNotes = () => {
-    const a = document.createElement("a");
-    a.href = note.url;
-    a.download = note.url || "notes"; // file name
-    a.click();
-  };
+  
   return (
     <div className="flex flex-col   ">
       <div className="  px-4 h-45 border-t-2 border-purple-200 rounded-t-2xl bg-linear-360 from bg-purple-100 to-red-200   items-center text-center justify-center flex flex-col ">
@@ -15,6 +10,7 @@ const ExploreCard = ({ note }) => {
         <p className="text-gray-700  ">{note.subject}</p>
       </div>
       <div className="h-10 bg-red-50  rounded-b-2xl border-red-100 border-b-2  ">
+        <button onClick={}>Delete</button>
         <div className="flex justify-end px-2  py-1.5  items-center">
           <a href={note.url} target="_blank" className=""><MdDownload
             size={25}

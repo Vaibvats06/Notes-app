@@ -68,7 +68,9 @@ const Login = () => {
       console.log("Error during Google Sign-In:", error);
     }
   };
+  function loginkeyHander(){
 
+  }
   return (
     <div className="bg-[#fff9f6] min-h-screen w-full flex justify-center items-center p-4 ">
       <div className="w-full p-8 rounded-xl shadow-lg max-w-md bg-white h-2/3 border border-gray-200">
@@ -144,8 +146,10 @@ const Login = () => {
         </div>
 
         <button
+        id="loginButton"
           className="mb-4 w-full font-semibold  transition duration-200 justify-center border py-2 rounded cursor-pointer items-center bg-orange-600 border-orange-600 text-white hover:bg-[#e64323]"
           onClick={LoginHandler}
+          onKeyPress={loginkeyHander}
         >
           Log In
         </button>
