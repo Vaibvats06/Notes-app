@@ -10,7 +10,7 @@ const ExploreCard = ({ note }) => {
         <p className="text-gray-700  ">{note.subject}</p>
       </div>
       <div className="h-10 bg-red-50  rounded-b-2xl border-red-100 border-b-2  ">
-        <button onClick={}>Delete</button>
+        <button>Delete</button>
         <div className="flex justify-end px-2  py-1.5  items-center">
           <a href={note.url} target="_blank" className=""><MdDownload
             size={25}
