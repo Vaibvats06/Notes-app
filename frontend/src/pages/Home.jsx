@@ -8,11 +8,15 @@ import { useSelector } from "react-redux";
 import useNotesFetch from "../hooks/useNotesFetch";
 import { useEffect } from "react";
 
+
 const Home = () => {
   useGetCurrentUser();
   useNotesFetch();  
   const user=useSelector((state)=>state.user.userData)
   const notes=useSelector((state)=>state.notes.notesData)
+  console.log(notes)
+  const userId=useSelector((state)=>state.user.userData?._id)
+  const myNotes=notes.filter((item)=>item.userID===userId)
   
   const [userNotes,setUserNotes]=useState(data)
   
@@ -66,7 +70,7 @@ const Home = () => {
           <div className="w-full h-2/3 flex flex-col">
             <h1 className="my-5 font-bold text-3xl text-gray-500 ml-30">Explore</h1>
             {/* notes grid */}
-            <div className="mx-30 bg-white h-[40%] max-h-[40%] overflow-auto rounded-2xl">
+            <div className="mx-30 bg-[#EFE9E3] h-[55%] max-h-[55%] overflow-auto rounded-2xl">
               {/* notes will be displayed here */}
               {user === null ? (
                 <p className="text-center text-gray-400 pt-10">
@@ -74,8 +78,8 @@ const Home = () => {
                 </p>
               ) : (
                 // Render notes here
-                <div className="grid grid-cols-4 gap-6 h-full">
-                  {userNotes.map((note) => (
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 gap-6 mx-5 mt-5  h-full">
+                  {myNotes?.map((note) => (
                     <ExploreCard key={note.id}  note={note} />
                   ))}
                 </div>

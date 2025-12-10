@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-body {
+*{
    font-family: "Inter", sans-serif;
    
 }
@@ -11,9 +11,7 @@ body {
     clip-path: ellipse(75% 90% at 75% 50%);
   }
 }
-.line-height-normal {
-  --spacing: 1px; 
-}
+
 ::-webkit-scrollbar{
   display: none;
 }
