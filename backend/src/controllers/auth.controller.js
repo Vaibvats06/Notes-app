@@ -32,8 +32,9 @@ export async function register(req, res) {
     const token = await getToken(newUser.id);
 
     res.cookie("token", token, {
-      secure: false,
-      sameSite: "strict",
+      httpOnly: true,
+    secure: process.env.NODE_ENV === "production", // true on vercel
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
     });
@@ -60,8 +61,9 @@ export async function login(req, res) {
     }
     const token = await getToken(isUserExist.id);
     res.cookie("token", token, {
-      secure: false,
-      sameSite: "strict",
+      httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // true on vercel
+  sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 7*24*60 * 60 * 1000,
       httpOnly: true,
     });
