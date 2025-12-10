@@ -32,9 +32,11 @@ bg-white z-999 overflow-visible">
       <div className='flex gap-4 items-center'>
         {user &&  <div className='relative'>
           <div className='border px-2 py-1 rounded text-center justify-center shadow-md border-[#c0c6d0] cursor-pointer text-white bg-[#c7ccd7]' onClick={toggleLibrary}>My Library</div>
-          {showLibrary&&<div className='absolute top-10 -right-3 bg-white border border-gray-300 shadow-md rounded w-28 p-2 text-left z-1000 flex flex-col  gap-2 '>
-            <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={() => navigate("my-library/mynotes")}>My Notes</p>
-            <p className='text-sm cursor-pointer' onClick={()=>{navigate("my-library/myUploadNotes")}}>Shared Notes</p>
+          {showLibrary&&<div className='absolute top-10 -right-3 bg-white border border-gray-300 shadow-md rounded w-32 p-2 text-left z-1000 flex flex-col  gap-2 '>
+            <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={() => navigate("my-library/myNotes")}>My Notes</p>
+            <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={()=>{navigate("my-library/assignment")}}>My Assignment</p>
+            <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={()=>{navigate("my-library/pyqs")}}>PYQs</p>
+            <p className='text-sm  cursor-pointer' onClick={()=>{navigate("my-library/ssignment")}}>My Assignment</p>
           </div>}
         </div>
         }

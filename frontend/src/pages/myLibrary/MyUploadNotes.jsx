@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom'
 
 const MyUploadNotes = () => {
   useNotesFetch();
-  useGetCurrentUser()
   const notes=useSelector((state)=>state.notes.notesData)
   const navigate=useNavigate();
   const userId=useSelector((state)=>state.user.userData?._id)
