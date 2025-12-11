@@ -9,10 +9,10 @@ const UploadNotes = () => {
   const [chapterName, setChapterName] = React.useState("");
   const [subject, setSubject] = React.useState("");
   const [courseName, setCourseName] = React.useState("");
-  const [department, setDepartment] = React.useState("B.Tech");
+  const [department, setDepartment] = React.useState("");
   const [year, setYear] = React.useState("");
   const [semester, setSemester] = React.useState("");
-  const [file, setFile] = React.useState(null);
+  const [file, setFile] = React.useState("");
   
   //import course from tempdb
 
@@ -50,10 +50,10 @@ const UploadNotes = () => {
       setChapterName("");
       setSubject("");
       setCourseName("");
-      setDepartment("B.Tech");
+      setDepartment("");
       setYear("");
       setSemester("");
-      setFile(null);
+      setFile("");
       
     }
   };
@@ -129,7 +129,7 @@ const UploadNotes = () => {
                 className="outline-none border w-full px-2 py-1 rounded focus:border-orange-600"
                 required
               >
-                <option value="">Select Department</option>
+                <option value="">Select Course</option>
                  {department==="B.Tech"&&btechCourse.map((course)=>(
                   (<option value={course} key={course}>{course}</option>)
                  ))

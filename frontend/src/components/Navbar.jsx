@@ -23,7 +23,7 @@
     }
 
     return (
-      <div className="flex lg:px-10 lg:py-3 py-3 px-2 md:px-5 justify-between 
+      <div className="flex lg:px-10 lg:py-3 py-2 px-2 md:px-5 justify-between 
 border border-gray-300 items-center shadow-md fixed top-0 left-0 right-0  
 bg-white z-999 overflow-visible">
       <div><a className="font-bold text-xl text-green-600" href='/'>NotesGP<span className='text-orange-600 '>T</span></a></div>
@@ -36,14 +36,16 @@ bg-white z-999 overflow-visible">
             <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={() => navigate("my-library/myNotes")}>My Notes</p>
             <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={()=>{navigate("my-library/assignment")}}>My Assignment</p>
             <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={()=>{navigate("my-library/pyqs")}}>PYQs</p>
-            <p className='text-sm  cursor-pointer' onClick={()=>{navigate("my-library/ssignment")}}>My Assignment</p>
+            <p className='text-sm pb-2 cursor-pointer  border-gray-200 border-b' onClick={()=>{navigate("my-library/ssignment")}}>My Assignment</p>
+            <p className='text-sm md:hidden  cursor-pointer' onClick={()=>{navigate("/upload-notes")}}>Upload Notes</p>
           </div>}
         </div>
         }
         
-      {user && <div className='border px-2 py-1 rounded text-center justify-center shadow-md hover:translate-y-px  border-[#185ce6] cursor-pointer text-white bg-[#185ce6]' onClick={() => navigate("/upload-notes")}>Upload Notes
+      {user && <div className='border hidden md:block px-2 py-1 rounded text-center justify-center shadow-md hover:translate-y-px  border-[#185ce6] cursor-pointer text-white bg-[#185ce6]' onClick={() => navigate("/upload-notes")}>Upload Notes
         </div>}
-      {user?<div className='border px-2 py-1 rounded text-center justify-center shadow-md hover:translate-y-px  border-orange-600 cursor-pointer text-white bg-orange-600' onClick={handleSignOut}>Logout</div>:
+      {user?
+      <div className='border px-2 py-1 rounded text-center justify-center shadow-md hover:translate-y-px  border-orange-600 cursor-pointer text-white bg-orange-600' onClick={handleSignOut}>Logout</div>:
       <div className='border px-4 py-1 rounded-xl font-medium  text-xl text-center justify-center shadow-md hover:translate-y-px  border-[#16C47F] duration-300 cursor-pointer text-white bg-[#16C47F]' onClick={() => navigate("/login")}>Login</div>}
       </div>
   </div>
