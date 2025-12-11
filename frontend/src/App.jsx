@@ -11,6 +11,7 @@ import { Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MyNotes from "./pages/myLibrary/MyNotes.jsx";
 import MyUploadNotes from "./pages/myLibrary/MyUploadNotes.jsx";
+import Pyqs from "./pages/myLibrary/Pyqs.jsx";
 
 const App = () => {
   const userData = useSelector((state) => state.user.userData); // Replace with actual user data retrieval logic
@@ -35,8 +36,8 @@ const App = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
         {/* My Library Routes */}
-        <Route path="/my-library/mynotes" element={userData && <MyNotes />} />
-        <Route path="/my-library/myuploadnotes" element={<MyUploadNotes />} />
+        <Route path="/my-library/mynotes" element={userData?<MyUploadNotes />: <Navigate to="/login" />} />  
+        <Route path="/my-library/pyqs" element={userData?<Pyqs />: <Navigate to="/login" />} /> 
       </Routes>
 
       {/* Toast notification container */}
