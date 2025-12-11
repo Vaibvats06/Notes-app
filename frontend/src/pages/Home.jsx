@@ -70,7 +70,7 @@ const Home = () => {
           <div className="w-full h-2/3 flex flex-col">
             <h1 className="md:my-5 font-bold text-3xl text-gray-500 ml-5 md:ml-30">My Notes</h1>
             {/* notes grid */}
-            <div className="md:mx-30 bg-[#EFE9E3] h-[55%] max-h-[55%] overflow-auto rounded-2xl">
+            <div className="mx-5 md:mx-30 bg-[#EFE9E3] h-[55%] max-h-[55%] overflow-auto rounded-2xl">
               {/* notes will be displayed here */}
               {user === null ? (
                 <p className="text-center text-gray-400 pt-10">
