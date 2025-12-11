@@ -19,7 +19,7 @@ const DashboardNavbar = () => {
      // Redirect to home or login page after sign-out
   };
   return (
-    <div className="flex lg:px-10 lg:py-3 py-3 justify-between border border-gray-300 items-center shadow-md fixed top-0 left-0 right-0 bg-white z-80 overflow-hidden">
+    <div className="flex px-3 lg:px-10 lg:py-3 py-3 justify-between border border-gray-300 items-center shadow-md fixed top-0 left-0 right-0 bg-white z-80 overflow-hidden">
     <div><a className="font-bold text-xl text-green-600" href='/'>NotesGP<span className='text-orange-600 '>T</span></a></div>
     <div className='flex gap-4 items-center'>
     <div className='border px-2 py-1 rounded shadow-md hover:translate-y-px  border-orange-600 cursor-pointer text-white bg-orange-600' onClick={handleSignOut}>Logout</div>

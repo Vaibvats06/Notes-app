@@ -5,8 +5,6 @@ export async function uploadNotes(req, res) {
     try {
         const {chapterName, subject, department, courseName, year, semester,file} = req.body;
         const userId=req.userId;
-        console.log(chapterName);
-        console.log(req.file);
         const result=await fileUpload(req.file.buffer,uuid())
         const notesData = await Notes.create({
             chapterName,

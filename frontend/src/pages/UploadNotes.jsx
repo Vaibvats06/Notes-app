@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import DashboardNavbar from "../components/DashboardNavbar";
-
+import {allCourse, btechCourse,bpharmaCourse,mbaCourse,bbaCourse,bcaCourse, mcaCourse,mtechCourse} from "../tempDB/NotesData";  
 const UploadNotes = () => {
   const navigate = useNavigate();
   const [chapterName, setChapterName] = React.useState("");
@@ -14,6 +14,7 @@ const UploadNotes = () => {
   const [semester, setSemester] = React.useState("");
   const [file, setFile] = React.useState(null);
   
+  //import course from tempdb
 
   //upload handler function
   const uploadHandler = async () => {
@@ -23,6 +24,7 @@ const UploadNotes = () => {
       return;
     }
     //form data to send to backend
+
     formData.append("chapterName", chapterName);
     formData.append("subject", subject);
     formData.append("courseName", courseName);
@@ -62,8 +64,8 @@ const UploadNotes = () => {
     
       <DashboardNavbar/>
     
-    <div className="w-screen h-screen bg-[#f6f6f8] text-black items-center flex relative top-16">
-      <div className="mx-50 w-full">
+    <div className="w-screen h-screen bg-[#f6f6f8] text-black items-center flex relative xs:top-20 top-16">
+      <div className="mx-5 lg:mx-50 w-full">
         {/* Heading and description */}
         <h1 className="text-2xl font-bold mb-2 text-gray-900">
           Add New Notes{" "}
@@ -95,8 +97,75 @@ const UploadNotes = () => {
             />
           </div>
           {/* Input fields for subject & course name */}
-          <div className="mb-4 grid grid-cols-2 gap-6">
+          <div className="mb-4 grid sm:grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="">
+              <label htmlFor="department" className=" mb-1 block">
+                Department
+              </label>
+              <select
+                name="department"
+                id="department"
+                value={department}
+                onChange={(e) => setDepartment(e.target.value)}
+                className="outline-none border w-full px-2 py-1 rounded "
+              >
+                 <option value="">Select Department</option>
+                 {allCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="courseName" className=" mb-1">
+                Course Name
+              </label>
+              <select
+                type="text"
+                name="courseName"
+                value={courseName}
+                onChange={(e) => setCourseName(e.target.value)}
+                id="courseName"
+                placeholder="e.g., Computer Science ,Electronics, etc"
+                className="outline-none border w-full px-2 py-1 rounded focus:border-orange-600"
+                required
+              >
+                <option value="">Select Department</option>
+                 {department==="B.Tech"&&btechCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))
+                 ||
+                 department==="B.Pharma"&&bpharmaCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))
+                 ||
+                 department==="MBA"&&mbaCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))
+                 ||
+                 department==="BBA"&&bbaCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))
+                 ||
+                 department==="BCA"&&bcaCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))
+                 ||
+                 department==="MCA"&&mcaCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))
+                 ||
+                 department==="M.Tech"&&mtechCourse.map((course)=>(
+                  (<option value={course} key={course}>{course}</option>)
+                 ))}
+                </select>
+
+            </div>
+            
+           
+          </div>
+          {/* Dropdowns for department, semester & year */}
+          <div className="mb-4 grid sm:grid-cols-1 lg:grid-cols-2 gap-6">
+             <div className="">
               <label htmlFor="subject" className=" mb-1">
                 Subject
               </label>
@@ -110,40 +179,6 @@ const UploadNotes = () => {
                 className="outline-none border w-full px-2 py-1 rounded focus:border-orange-600"
                 required
               />
-            </div>
-            <div>
-              <label htmlFor="courseName" className=" mb-1">
-                Course Name
-              </label>
-              <input
-                type="text"
-                name="courseName"
-                value={courseName}
-                onChange={(e) => setCourseName(e.target.value)}
-                id="courseName"
-                placeholder="e.g., Computer Science ,Electronics, etc"
-                className="outline-none border w-full px-2 py-1 rounded focus:border-orange-600"
-                required
-              />
-            </div>
-          </div>
-          {/* Dropdowns for department, semester & year */}
-          <div className="mb-4 grid grid-cols-2 gap-6">
-            <div className="">
-              <label htmlFor="department" className=" mb-1 block">
-                Department
-              </label>
-              <select
-                name="department"
-                id="department"
-                value={department}
-                onChange={(e) => setDepartment(e.target.value)}
-                className="outline-none border w-full px-2 py-1 rounded "
-              >
-                 <option value="">Select Department</option>
-                <option value="B.Tech">B.Tech</option>
-                <option value="B.Pharma">B.Pharma</option>
-              </select>
             </div>
             <div className="grid grid-cols-2 gap-6">
               <div className="">
@@ -176,14 +211,29 @@ const UploadNotes = () => {
                   className="outline-none border w-full px-2 py-1 rounded "
                 >
                    <option value="">Select Semester</option>
-                  <option value="1">1</option>
+                  {year==="1"&& (
+                    <>
+                    <option value="1">1</option>
                   <option value="2">2</option>
-                  <option value="3">3</option>
+                  </>)}
+                  
+                  {year==="2"&& (
+                    <>
+                    <option value="3">3</option>
                   <option value="4">4</option>
-                  <option value="5">5</option>
+                  </>)}
+
+                  {year==="3"&& (
+                    <>
+                    <option value="5">5</option>
                   <option value="6">6</option>
-                  <option value="7">7</option>
+                  </>)}
+
+                  {year==="4"&& (
+                    <>
+                    <option value="7">7</option>
                   <option value="8">8</option>
+                  </>)}
                 </select>
               </div>
             </div>
