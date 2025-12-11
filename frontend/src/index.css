@@ -8,7 +8,7 @@
  
 @layer utilities {
   .clip-curve {
-    clip-path: ellipse(75% 90% at 75% 50%);
+    clip-path: ellipse(60% 80% at 50% 80%);
   }
 }
 

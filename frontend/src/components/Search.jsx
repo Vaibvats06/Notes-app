@@ -4,7 +4,7 @@ import { IoIosSearch } from "react-icons/io";
 const Search = () => {
     const [search, setSearch] = React.useState("");
   return (
-    <div className="lg:w-3/5  rounded-md  border border-gray-400 flex bg-gray-200 ">
+    <div className="lg:w-3/5 w-[80%] rounded-md  border border-gray-400 flex bg-gray-200 ">
         <div className='py-2 px-2'><IoIosSearch size={25} className='text-gray-400' /></div>
     <input type="text" name="" id="" className='w-full h-full py-2 outline-0' onChange={(e)=>{setSearch(e.target.value)}} />
     {search && search.length > 0 && (<div className='absolute bg-white mt-12 shadow-lg rounded-md max-h-60 overflow-y-auto lg:w-3/5'>
