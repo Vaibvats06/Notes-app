@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import MyNotes from "./pages/myLibrary/MyNotes.jsx";
 import MyUploadNotes from "./pages/myLibrary/MyUploadNotes.jsx";
 import Pyqs from "./pages/myLibrary/Pyqs.jsx";
+import AllNotes from "./pages/AllNotes.jsx";
 
 const App = () => {
   const userData = useSelector((state) => state.user.userData); // Replace with actual user data retrieval logic
@@ -19,6 +20,9 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/all-notes" element={<AllNotes />} />
+        <Route path="/pyqs" element={<Pyqs />} />
+
 
         <Route
           path="/upload-notes"
